@@ -1,1 +1,34 @@
-\chapter{Experiment Result}
+% vim:ts=4:sw=4
+%
+% Copyright (c) 2008-2009 solvethis
+% Copyright (c) 2010-2012 Casper Ti. Vector
+% Public domain.
+
+\chapter{Classification with RCBHT using SVM}
+In this section we would introduce our classifier. Labels of three lower RCBHT layers will be used to construct fix-length vector. The premise of constructing RCBHT labels is that success cases have similar signal patterns in all six axis and similar patterns indicate the similar upwards and downwards. \\
+\indent In this section our approach will be introduced. With SVM, there's two ways to construct feature vector. In \cite{masonfailure}, they constructed feature vector based on the data itself. They used data at certain time stamp and combine them to be a fix-length vector. This is called data-driven method. With fix length vector, they used Gaussian kernel function to classify success and failure cases. The limit for this approach is that when there is some delay in between the states, the vector will be quite different and the case will be characterized as failure though the delay didn't effect the whole process. \\
+\indent We used RCBHT to sample our process, which is not data-driven method but gradient-driven. The taxonomy RCBHT is based on relative change. When a delay happens, usually, at the very begining of the whole process, with RCBHT, the vector will be the same as the delay didn't happen because the delay will be catagorized with neighbour label cons (In Primitive layer). Another reason for choosing RCBHT is that this taxonomy is specially developed for this task. The increasingly abstracted hierarchical taxonomy provides date-rich information. Varying layers of labels can construct to be different feature vectors and data-rich feature vectors provide more possible for this task.\\ 
+\indent This two approachs with SVM all based on one assumption when the classifier was trained, it could only be used for assembly with same configuration. Different geometric snap, changing assembly strategy, different sensor position etc. would change the signal patterns which would be misidentified. Any change of configuration required retraining under that configuration. \\
+\indent Then comes to our approach setup. In the first subsection following, we will describe our approach to construct feature in detail. The second subsection will talk about our work with SVM briefly. 
+\section{Feature Vector Constructing}
+\indent With RCBHT, we sample the whole process using Primitive labels, Motion Composites labels, Low-level behavior labels. Each axis, $F_{i}$, contains n entries, each represent a kind of label $e_{j}$. Such that $F_{i} = {e_{1}, e_{2}, \dots , e_{n}}$. The whole vector is consist of six axis, $F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}$, and the vector will be conducted as $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$. Take the vector representing Primitive layer for example. If in $F_{x}$, bpos occurs twice, mpos occurs once, and the other axis do not have labels (which is an impossible case but just for better understanding), the final vector will be constructed as $[2, 1,\underbrace{0,0, \dots, 0}_\text{52 zeros}]$     \\
+\indent Detailed representation for Primitive layer, Motion Composites layer, Low-level behavior layer can be seem in \ref{featureVector}.
+\begin {table}[h]
+\centering
+\caption {Feature Vector Representation}
+\label {featureVector}
+\begin {tabular}{|llllllllll|}
+\hline
+Vector Position & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     \\ \hline
+Primitive Layer & bpos  & mpos  & spos  & bneg  & mneg  & sneg  & cons  & pimp  & nimp  \\ \hline
+MC Layer        & a     & i     & d     & k     & pc    & nc    & c     &       &       \\ \hline
+LLB Layer       & FX    & CT    & PS    & PL    & AL    & SH    & U     & N     &       \\ \hline
+\end {tabular}
+\end {table}
+
+\section{Classify Feature Vector}
+After constructing feature vectors, classifer should be trained between the success and failure cases. Among different techniques for supervised classification, linear Support Vector Machine is chosen. In this section, we will briefly talk about classifier implementation and review Support Vector Machine and kernel function.\\
+\section{Support Vector Machine Review}
+
+\section{Implementation of classifer}
+\indent In our work, libsvm \cite{CC01a} is used. After labeling each feature vector with 1 or -1 to present success or failure, the cases with labels were then trained with Support Vector Machine and get a hyperplane. The two kind of cases were separated in the two sides. With this hyperplane, new cases can be predicted. \\

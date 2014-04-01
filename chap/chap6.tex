@@ -1,0 +1,19 @@
+\chapter{Discussion and Future Work}
+
+\section{Discussion}
+
+The high accrucy of using the whole process of LLB and MC indicates that there are difference between success cases and failure cases and RCBHT can show it. But when only the Approach stage was measured, there are too little information to identify the failure. In some cases, there was only one LLB, which began at the very start and didn't finished, for some of their axis. While little information caused the lack of diversity, too much information with noise also prevent a good hypothesis. The P of the whole process contain too much noise of viberation and friction. For only the approach stage, though the noise may disturb the prediction accrucy, the Classifier still give good hypothesis. For the whole, the noise is too much. \\
+
+\indent Then we can predict the ongoing case early in the assembly process, the Approach stage. We had more free space in refining the lateral actions. The failure assembly task can be detected and stopped only after the Approach stage to prevent the damage of the machine arm or breaking the cantilever snap. \\ 
+
+\indent The limitation of this approach is that we assume the machine hand got some problems at the begining, or say, the assembly is wrong from the begining. If the machine hand got into problem during the assembly, we could not realized at the very moment.
+
+
+
+\section{Future Work}
+
+We should consider these two improvement we could make: (1)Classify the failure cases into subsets and (2) be able to detect failure as soon as it happens. \\ 
+
+\indent Classifying the failure cases with the force/torque signal into subsets, we would have the posterior of the diviation distribution and the corresponding diviation of specific signal. Failure cases with only one or two axis of diviation can be success classified currently but we could not effectively implement it with three axis of diviation. \\
+
+\indent Being able to detect failure at the moment it got away from the right path is necessary because these kinds of robotic problems would cause huge problems. The damage would be acute at the first wrong behavior. If the hypothesis could be made after this behavior occurs, or the second time it began, the machine arm had been have some damage.   

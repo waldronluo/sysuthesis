@@ -4,21 +4,12 @@
 % Copyright (c) 2010-2012 Casper Ti. Vector
 % Public domain.
 
-\chapter{Classification with RCBHT using SVM}
-In this section we would introduce our classifier. Labels of three lower RCBHT layers will be used to construct fix-length vector. The premise of constructing RCBHT labels is that success cases have similar signal patterns in all six axis and similar patterns indicate the similar upwards and downwards. \\
-This assumption also indicates that when our classifier was trained, it could only be used for assembly with same configuration. Different geometric snap, changing assembly strategy, different sensor position etc. would change the signal patterns which would be misidentified. Any change of configuration required retraining under that configuration. \\
-Then comes to our approach setup. In the first subsection following, we will describe our approach to construct data in detail. The second subsection will talk about SVM briefly. 
-\subsection{Data construction}
-\indent With RCBHT, we can sample the whole process using Primitive labels, Motion Composites labels, Low-level behavior labels. Each axis, $F_{i}$, contains n entries, each represent a kind of label $e_{j}$. Such that $F_{i} = {e_{1}, e_{2}, \dots , e_{n}}$. The whole vector is consist of six axis, $F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}$, and the vector will be conducted as $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$. Take the vector representing Primitive layer for example. If in $F_{x}$, bpos occurs twice, mpos occurs once, and the other axis do not have labels (which is an impossible case but just for better understanding), the final vector will be constructed as $[2, 1,\underbrace{0,0, \dots, 0}_\text{52 zeros}]$     \\
-\indent Detailed representation for Primitive layer, Motion Composites layer, Low-level behavior layer can be seem in figure.
-\begin {table}[h]
-\centering
-\begin {tabular}{|llllllllll|}
-\hline
-Vector Position & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     \\ \hline
-Primitive Layer & bpos  & mpos  & spos  & bneg  & mneg  & sneg  & cons  & pimp  & nimp  \\ \hline 
-MC Layer        & a     & i     & d     & k     & pc    & nc    & c     &       &       \\ \hline
-LLB Layer       & FX    & CT    & PS    & PL    & AL    & SH    & U     & N     &       \\ \hline
-\end {tabular}
-\end {table}
+\chapter{Overview}
+\section{Experimental Setup}
+
+\section{Control Strategy}
+
+\section{Relative Change Based Hirearchical Taxonomy System}
+
+
 
