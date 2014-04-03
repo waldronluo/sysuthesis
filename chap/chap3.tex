@@ -25,10 +25,20 @@ MC Layer        & a     & i     & d     & k     & pc    & nc    & c     &       
 LLB Layer       & FX    & CT    & PS    & PL    & AL    & SH    & U     & N     &       \\ \hline
 \end {tabular}
 \end {table}
-
 \section{Classify Feature Vector}
 After constructing feature vectors, classifer should be trained between the success and failure cases. Among different techniques for supervised classification, linear Support Vector Machine is chosen. In this section, we will briefly talk about classifier implementation and review Support Vector Machine and kernel function.\\
 \section{Support Vector Machine Review}
-
+The Support Vector Machine methos is to find a hyperplane that separate the cases with different labels. Nice prediction are made when all cases, represented by points, are far away from the hyperplane, which means all the hyphothesis are creditable. The hyperplane can be represented as:$\omega^{T}x+b=0$. Here $\omega^{T}$ is the multiply factor of the hyperplane when b means the bias from the zero point. Each point, the deviation can be represented as: \\
+\begin{equation}
+    \hat{\gamma}^{(i)}=y^{(i)}(\omega^{(i)}x+b)
+\end{equation}
+Here $(y^{(i)}, x^{(i)}$ is a single case when $y^{(i)}$ is the label whether this case was success or not represented in {1, -1} respectively and $x^{(i)}$ is the vector input for training and testing. $\hat{\gamma}^{(i)}$ is the functional margin of this case. To have a nice hyperplane, we need to let as many as possible points to get as far away as well from the hyperplane. That's to say,
+\begin{equation}
+    \begin{split}
+        max\quad&\gamma \nonumber \\
+        s.t.\quad&\gamma = \underset{i = 1,\ldots,m}{min}\hat{\gamma}
+    \end{split}
+\end{equation}
+Here $\gamma$ is the geometric margin of points from hyperplane. This equation shows that the nature of SVM is to find a hyperplane to maximize $\gamma$, which is the least functional margin of $\hat{\gamma}$.
 \section{Implementation of classifer}
-\indent In our work, libsvm \cite{CC01a} is used. After labeling each feature vector with 1 or -1 to present success or failure, the cases with labels were then trained with Support Vector Machine and get a hyperplane. The two kind of cases were separated in the two sides. With this hyperplane, new cases can be predicted. \\
+\indent In our work, libsvm \cite{CC01a} is used with Gaussian Kernel \cite{keerthi2003asymptotic}, which is recommended as the first try kernel. After labeling each feature vector with 1 or -1 to present success or failure, the cases with labels were then trained with Support Vector Machine and get a hyperplane. The two kind of cases were separated in the two sides. With this hyperplane, new cases can be predicted. \\

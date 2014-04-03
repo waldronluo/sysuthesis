@@ -1,24 +1,10 @@
-<<<<<<< HEAD
-
-\chapter{Introduction}
-
-Uncertain failure occurs during a assembly task to the severe detriment to the assembly parts and the robot hands. Failures should be detected as early as possible and actions should be taken. In our work, we used SVM to identify the failure cases and detect the failure early in the assembly process. \\
-\indent In our previous work, we built the framework for snap assembly in varying geometric complexity, including the generalizable strategy and controllers\cite{2012JAR-Rojas-AutHetBotAsmbly} \cite{2012ICMA-Rojas-PivotApproach}, the state estimation\cite{2012IROS-Rojas-RCBHT}, the failure characterization\cite{2012Humanoids-Rojas-pRCBHT}. All our contribution are integrated in \cite{2013IJMA-Rojas-TwrdsSnapSensing}. \\
-\indent The failure identification technique previously used was pRCBHT\cite{2013IJMA-Rojas-TwrdsSnapSensing}. pRCBHT is consist of RCBHT, Relative Change Based Hierarchical Taxonomy, which is a taxonomy used multi layer labels to sample the assembly process, and bayesian filter, which takes the labels as input and predict the result of the assembly with Markovian assumption. In this paper, rather than using the probabilistic methods, Support Vector Machine(SVM) is used instead. Compared to bayesian filter, SVM is an easier approach in implementing and more intuitive to the classification. In our case, SVM was used with Primitive labels, Motion Composites labels (MC), Low-level Behaviors labels which are increasingly abstracted. The more abstracted labels contains less information but more refining. On the contrary, the less abstracted labels contains more information embodying the abundant noise. \\
-\indent SVM is one of the most widely used classification approach contemporarily. Compared to data-driven method using SVM\cite{masonfailure}, RCBHT is Rather than data-driven, the labels of RCBHT can be said as gradient-driven. The premise of data-driven methods is that the success cases would have similar curves of signals. Similar curves also had similar upwards and downwards, and so we tried RCBHT with SVM to classify the assembly cases. \\
-\indent With LLB labels and MC labels of the whole process, failure cases can be identified. With the Approach state of Primitive labels, early failure detection is done in our approach. This is significant when failure detection is done early in assembly because cancellation and redoing can be called in time for prevention and cut the cost.\\
-\indent Other approaches including \cite{rodriguez2011abort} and \cite{di2013bayesian}, signals were trainedwith Hidden Markov Model (HMM). Their methods are more general, but RCBHT was specially developed for the cantilever-snap assembly and increasingly abstracted layers will be more data-rich. \\
-\indent Though our approach has a high accrucy in identify failure cases. ....There is two limits. The first one is that with RCBHT, this approach is not general for other force/torque signal analysis. The second one is that the failure assembly is assumed to happen from the very begining. If something happened in between the process, we can't detect it as soon but until a state finished. \\
-\indent In section 2, we will detail our previous work including assembly strategy and RCBHT taxonomy. In section 3, we will talk about using SVM with RCBHT to classify the failure cases. In section 4, we will give a brief review about SVM. In section 5, we will depict our experiment result and have a brief discuss about the result and limitation of the approach. In the last section, we will conclude this paper and talk about our future work. \\
-=======
 % vim:ts=4:sw=4
 %
 % Copyright (c) 2008-2009 solvethis
 % Copyright (c) 2010-2012 Casper Ti. Vector
 % Public domain.
 
-\specialchap{Introduction}
->>>>>>> c05673f833be89559df63e5d66b762250e55d1f2
+\chapter{Introduction}
 
 Uncertain failure occurs during a assembly task to the severe detriment to the assembly parts and the robot hands. Failures should be detected as early as possible and actions should be taken. In our work, we used SVM to identify the failure cases and detect the failure early in the assembly process.
 \indent In our previous work, we built the framework for snap assembly in varying geometric complexity, including the generalizable strategy and controllers\cite{2012JAR-Rojas-AutHetBotAsmbly} \cite{2012ICMA-Rojas-PivotApproach}, the state estimation\cite{2012IROS-Rojas-RCBHT}, the failure characterization\cite{2012Humanoids-Rojas-pRCBHT}. All our contribution are integrated in \cite{2013IJMA-Rojas-TwrdsSnapSensing}. \\

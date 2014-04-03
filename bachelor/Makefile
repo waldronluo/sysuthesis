@@ -46,6 +46,7 @@ doc:
 	$(LATEX) $(JOBNAME)
 	$(LATEX) $(JOBNAME)
 	$(DODVIPDF)
+	$(MAKE) clean
 
 clean:
 	$(RM) $(JOBNAME).{aux,bbl,bcf,blg,dvi,lof,log,lot,run.xml,toc,out{,.bak}} \

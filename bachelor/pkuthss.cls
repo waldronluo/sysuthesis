@@ -59,7 +59,7 @@
 % pkuthss is based on ctexbook; We use A4 paper, and `xiao 4' as default font size.
 % CJKfntef provides \CJKunderline used in \maketitle.
 % fancyhdr provides utilities for setting headers and footers.
-\LoadClass[fntef,a4paper,fancyhdr,cs4size]{ctexbook}[2009/10/20]
+\LoadClass[fntef,a4paper,fancyhdr,cs4size,openany]{ctexbook}[2009/10/20]
 % Provide support for `key = val' grammar.
 \RequirePackage{keyval}
 % Graphics support.
