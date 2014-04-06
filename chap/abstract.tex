@@ -5,12 +5,10 @@
 % Public domain.
 
 \begin{cabstract}
-
-
+    我们使用了基于变化的多层分类法(RCBHT)来对力/扭力(FT)信号进行分析。RCBHT会逐层抽象原始FT信号为标签，再对这些标签使用支持向量机进行分类。RCBHT是为悬臂卡扣组装专门设计的信号分析方法，它对卡扣组装的FT信号进行分析并提炼出一系列的动作；而支持向量机是现在广为使用的分类法。在我们的工作当中，这两种方法被结合起来用以对错误案例进行分析，将它们区分出来。我们最终得到的高符合度测试结果显示RCBHT能够良好地表示组装过程，而对于RCBHT的结果，支持向量机可以很好地进行分类。分类的结果最后可用于纠正错误组装，从而减少因错误带来的损耗。
 \end{cabstract}
 
 \begin{eabstract}
-
-
+    Our work uses Relative Change Based Hierarchical Taxonomy System (RCBHT) to sample and represent specific force/torque signal with increasingly abstracted labels and uses Support Vector Machine (SVM) to identify failure cases. RCBHT is a taxonomy that are designed for recognizing the behavior sequence ofcantilever snap assembly. Support Vector Machine is one of the most widely used methods for classification. In our work, the two methods are combined to detect the failure cases among all trial cases. Our high accuracy hyphothesis result indicates that RCBHT is able to intuitively present this assembly process and SVM is good at classifying for this task. The classification will benefit the prevention of the detriment from happening and correcting the failure behaviors.
 \end{eabstract}
 
