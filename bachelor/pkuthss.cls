@@ -116,14 +116,14 @@
 \geometry{height = 240mm, width = 150mm, includeheadfoot, headheight = 1.2em}
 % Set headers and footers.
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[LE]{\small\normalfont\leftmark}
-\fancyhead[RO]{\small\normalfont\rightmark}
-\fancyhead[LO,RE]{\small\normalfont\cuniversity\cthesisname}
-\fancyfoot[RO,LE]{\small\normalfont --~\thepage~--}
-% Set the headers and footers on the first page in every chapter.
+%\fancyhead[LE]{\small\normalfont\leftmark}
+%\fancyhead[RO]{\small\normalfont\rightmark}
+\fancyhead[C]{\small\normalfont}
+\fancyfoot[C]{\small\normalfont --~\thepage~--}
+%% Set the headers and footers on the first page in every chapter.
 \fancypagestyle{plain}{
 	\fancyhf{}\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[RO,LE]{\small\normalfont --~\thepage~--}
+  \fancyfoot[C]{\small\normalfont --~\thepage~--}
 }
 
 % eg. `\pkuthss@int@infoitema{ctitle}' will expand to:
@@ -244,8 +244,8 @@
 	\vspace{-2em}\par
 	\begin{center}
  		\zihao{-3}
- 		{\pkuthss@tmp@author}\quad{\pkuthss@tmp@major}\\
- 		{\pkuthss@tmp@label@mentor}{\pkuthss@tmp@mentor}
+ 	%	{\pkuthss@tmp@author}\quad{\pkuthss@tmp@major}\\
+ 	%	{\pkuthss@tmp@label@mentor}{\pkuthss@tmp@mentor}
 	\end{center}
 	\vspace{1em}\par
 	\section*{\zihao{4}\pkuthss@tmp@abstractname}
@@ -256,16 +256,16 @@
 
 % Typesetting the Chinese abstract.
 \newenvironment{cabstract}{
-	\def\pkuthss@tmp@abstlabel{cabstract}
-	\let\pkuthss@tmp@title\@ctitle
- 	\let\pkuthss@tmp@author\@cauthor
-	\let\pkuthss@tmp@major\@cmajor
- 	\let\pkuthss@tmp@mentor\@cmentor
- 	\let\pkuthss@tmp@keywords\@ckeywords
- 	\let\pkuthss@tmp@label@mentor\label@cmentorb
- 	\let\pkuthss@tmp@label@keywords\label@ckeywords
-	\let\pkuthss@tmp@abstractname\cabstractname
-	\begin{pkuthss@int@abstract}
+\def\pkuthss@tmp@abstlabel{cabstract}
+\let\pkuthss@tmp@title\@ctitle
+  \let\pkuthss@tmp@author\@cauthor
+\let\pkuthss@tmp@major\@cmajor
+  \let\pkuthss@tmp@mentor\@cmentor
+  \let\pkuthss@tmp@keywords\@ckeywords
+  \let\pkuthss@tmp@label@mentor\label@cmentorb
+  \let\pkuthss@tmp@label@keywords\label@ckeywords
+\let\pkuthss@tmp@abstractname\cabstractname
+\begin{pkuthss@int@abstract}
 }{\end{pkuthss@int@abstract}}
 
 % Typesetting the English abstract.

@@ -28,7 +28,7 @@
 \providecommand\cnldquot{}
 \providecommand\cnrdquot{}
 \providecommand\cncomma{，}
-\providecommand\cndslash{//}
+\providecommand\cndslash{  }
 \providecommand\cnscolon{；}
 \providecommand\cncolon{：}
 \providecommand\cnperiod{. }

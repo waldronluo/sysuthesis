@@ -1942,18 +1942,23 @@
     <bcf:datasource type="file" datatype="bibtex">xbib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">2012JAR-Rojas-AutHetBotAsmbly</bcf:citekey>
-    <bcf:citekey order="2">2012ICMA-Rojas-PivotApproach</bcf:citekey>
-    <bcf:citekey order="3">2012IROS-Rojas-RCBHT</bcf:citekey>
-    <bcf:citekey order="4">2012Humanoids-Rojas-pRCBHT</bcf:citekey>
-    <bcf:citekey order="5">2013IJMA-Rojas-TwrdsSnapSensing</bcf:citekey>
-    <bcf:citekey order="6">2013IJMA-Rojas-TwrdsSnapSensing</bcf:citekey>
+    <bcf:citekey order="1">fullmer1989parts</bcf:citekey>
+    <bcf:citekey order="2">cho2005tool</bcf:citekey>
+    <bcf:citekey order="3">hsueh2008prediction</bcf:citekey>
+    <bcf:citekey order="4">althoefer2008automated</bcf:citekey>
+    <bcf:citekey order="5">2012JAR-Rojas-AutHetBotAsmbly</bcf:citekey>
+    <bcf:citekey order="6">2012Humanoids-Rojas-pRCBHT</bcf:citekey>
     <bcf:citekey order="7">masonfailure</bcf:citekey>
-    <bcf:citekey order="8">rodriguez2011abort</bcf:citekey>
-    <bcf:citekey order="9">di2013bayesian</bcf:citekey>
-    <bcf:citekey order="10">2012IROS-Rojas-RCBHT</bcf:citekey>
-    <bcf:citekey order="11">CC01a</bcf:citekey>
-    <bcf:citekey order="12">keerthi2003asymptotic</bcf:citekey>
+    <bcf:citekey order="8">masonfailure</bcf:citekey>
+    <bcf:citekey order="9">masonfailure</bcf:citekey>
+    <bcf:citekey order="10">rodriguez2011abort</bcf:citekey>
+    <bcf:citekey order="11">di2013bayesian</bcf:citekey>
+    <bcf:citekey order="12">2012ICMA-Rojas-PivotApproach</bcf:citekey>
+    <bcf:citekey order="13">2013IJMA-Rojas-TwrdsSnapSensing</bcf:citekey>
+    <bcf:citekey order="14">2012IROS-Rojas-RCBHT</bcf:citekey>
+    <bcf:citekey order="15">CC01a</bcf:citekey>
+    <bcf:citekey order="16">keerthi2003asymptotic</bcf:citekey>
+    <bcf:citekey order="17">masonfailure</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="none">
   <bcf:sorting>

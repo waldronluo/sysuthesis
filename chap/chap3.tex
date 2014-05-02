@@ -4,16 +4,22 @@
 % Copyright (c) 2010-2012 Casper Ti. Vector
 % Public domain.
 
-\chapter{Classification with RCBHT using SVM}
+\chapter{Classification with SVMs and the RCBHT}
 In this section we will introduce a binary classifier using Support Vector Machines and feature inputs from RCBHT labels. The first three layers of the RCBHT taxonomy are of relevant importance to the classification problem. Labels from these three layers will be used to construct fixed-length feature vectors. The premise of constructing a feature vector out of RCBHT labels is that success cases have similar patterns in all six axis and similar patterns indicate the similar gradient of each separation of the signal.
 
+\indent The left four signal figures are success cases and right four are failure cases before Rotation state. The success cases are in similar patterns while the failure cases are different from the success cases diversely. With diverse gradients of different patterns, RCBHT can be used in our work.
 
-\indent Need pictures of success cases picture and pictures of failure cases.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{./img/1success.eps}
+    \includegraphics[scale=0.3]{./img/1failure.eps}
+    \caption{Success Fx signal and Failure Fx signal}
+    \label{sfsignal}
+\end{figure}
 
 
-
-\indent In this section our approach will be introduced. The RCBHT is used to create a feature vector. Our feature vectors are composed of gradient labels at three different levels of abstraction that characterize an assembly task. The taxonomy RCBHT is based on relative change. THe reason for choosing RCBHT is that this taxonomy is specially developed for this task. Also, the feature vector constructed with RCBHT has much fewer dimension, at most 9, than typical feature, which may use 2000 sample points for 10-second assembly with sampling frequency of 200Hz. \\
-\indent This approachs with SVM all based on one assumption when the classifier was trained, it could only be used for assembly with same configuration. Different geometric snap, changing assembly strategy, different sensor position etc. would change the signal patterns which would be misidentified. Any change of configuration required retraining under that configuration. \\
+\indent Thus, feature vectors were created with RCBHT. Our feature vectors are composed of gradient labels at three different levels of abstraction that characterize an assembly task. The taxonomy RCBHT is based on relative change. THe reason for choosing RCBHT is that this taxonomy is specially developed for this task. Also, the feature vector constructed with RCBHT has much fewer dimension, at most 9, than typical feature, which may use 2000 sample points for 10-second assembly with sampling frequency of 200Hz. \\
+\indent This approach with SVM all based on one assumption when the classifier was trained, it could only be used for assembly with same configuration. Different geometric snap, changing assembly strategy, different sensor position etc. would change the signal patterns which would be misidentified. Any change of configuration required retraining under that configuration. \\
 \indent Then comes to our approach setup. In the first subsection following, we will describe our approach to construct feature in detail. The second subsection will talk about our work with SVM briefly. 
 \section{Feature Vector Constructing}
 \indent With the RCBHT, we sample the whole assembly using Primitive labels, Motion Composites labels, Low-level behavior labels. Each axis, $F_{i}$, contains n entries, each represent a label type $e_{j}$. Such that $F_{i} = {e_{1}, e_{2}, \dots , e_{n}}$. The whole vector is consist of six axis, $F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}$. 9 labels independently of each axis is consisted in primitive layer, 7 of MC and 7 of LLB. The feature vector will be conducted containing 6 axis, as $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$. Take the vector representing Primitive layer if in $F_{x}$, bpos occurs twice, mpos occurs once, and the other axis do not have labels (which is an impossible case but just for better understanding), the final vector will be constructed as $[2, 1,\underbrace{0,0, \dots, 0}_\text{52 zeros}]$     \\

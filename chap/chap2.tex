@@ -6,19 +6,20 @@
 
 \chapter{Overview}
 \section{Experimental Setup}
-In our work, a simulator was used to produce the snap assembly process. HIRO, a simulated 6 DoF dual-arm anthropomorph robot was used in the OpenHRP 3.0 environment. CAD derived male and female camera parts were used and the male parts were mounted on the wrist while the female part with 4 snaps was fixed on the ground. The snap part of this task is cantilever snap. The cantilever snap is as the following picture. \\
+In our work, the OpenHRP 3.0 simulator was used to produce a snap assembly process using HIRO, a simulated 6 DoF dual-arm anthropomorph robot. CAD derived male and female camera molds with 4 cantilever snaps were used where the male part was rigidly mounted on the robot's wrist while the female part with 4 snaps was fixed on the ground. The snap part of this task is cantilever snap. The cantilever snap is as the following picture. \\
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{img/cantilever.png}
     \caption{Cantilever Snap}
     \label{snap}
 \end{figure}
-\indent For controlling, Side Approach strategy is used to assemble the snap parts and Relative Change Based Hierarchical Taxonomy System (RCBHT) is used to sample the force/torque signals of the whole process.
+\indent For controlling, Side Approach strategy \cite{2012ICMA-Rojas-PivotApproach} is used to assemble the snap parts and Relative Change Based Hierarchical Taxonomy System (RCBHT) is used to sample the force/torque signals of the whole process. Details of this work can be seem in \cite{2013IJMA-Rojas-TwrdsSnapSensing}.
 \section{Control Strategy}
-The control strategy is fixed. The assembly process contains four state: Approach state, Rotation state, Insertion state, Mating state. In approach state, the upper part approaches to the lower part. After approach state, the upper part rotates until the other two sides of the upper part and the lower part contact. Then force increase to insert the upper part into the lower part. The assembly is finished in Mating state. Details about this can be seen in Appendix.\\
+The control strategy is fixed. The assembly process contains four state: Approach state, Rotation state, Insertion state, Mating state. In approach state, the upper part approaches to the lower part. After approach state, the upper part rotates until the other two sides of the upper part and the lower part contact. Then force increase to insert the upper part into the lower part. The assembly is finished in Mating state. \\
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{img/controlStrategyFourStep.png}
+    \includegraphics[scale=0.7]{img/controlStrategyFourStep.png}
     \caption{Four control states}
     \label{RCBHT}
 \end{figure} 

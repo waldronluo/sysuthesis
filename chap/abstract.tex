@@ -5,10 +5,17 @@
 % Public domain.
 
 \begin{cabstract}
-    我们使用了基于变化的多层分类法(RCBHT)来对力/扭力(FT)信号进行分析。RCBHT会逐层抽象原始FT信号为标签，再对这些标签使用支持向量机进行分类。RCBHT是为悬臂卡扣组装专门设计的信号分析方法，它对卡扣组装的FT信号进行分析并提炼出一系列的动作；而支持向量机是现在广为使用的分类法。在我们的工作当中，这两种方法被结合起来用以对错误案例进行分析，将它们区分出来。我们最终得到的高符合度测试结果显示RCBHT能够良好地表示组装过程，而对于RCBHT的结果，支持向量机可以很好地进行分类。分类的结果最后可用于纠正错误组装，从而减少因错误带来的损耗。
+    错误检测在现代工业进程以及机器人服务，特别是无规则环境的作业中，担任越来越重要的角色。我们主要研究了悬臂卡扣组装中的错误检测技术。它在工业应用以及个人机器人中有着重要的地位。
+
+    \indent 我们希望根据卡扣组装过程的力信号特征，用小集合的特征向量来抽象组装过程，并且据此来训练支持向量机分类法，从而在组装任务的不同阶段精确地检测组装过程中发生的错误。在我们的实验中，我们通过抽象行为特征训练了一个线性支持向量机，从而进行卡扣组装的错误检测。这个方法在早/晚期的错误检测中非常有效。在早期错误检测中，抽象程度较低的行为特征集相对于高度抽象集表现得更好，这是因为在其局部时间内颗粒度更加精细的原因。在晚期错误检测中，高度抽象集表现得更好，因为对于全局的组装动作，高度抽象集更好地表示了组装动作。
+    
 \end{cabstract}
 
 \begin{eabstract}
-    Our work uses Relative Change Based Hierarchical Taxonomy System (RCBHT) to sample and represent specific force/torque signal with increasingly abstracted labels and uses Support Vector Machine (SVM) to identify failure cases. RCBHT is a taxonomy that are designed for recognizing the behavior sequence ofcantilever snap assembly. Support Vector Machine is one of the most widely used methods for classification. In our work, the two methods are combined to detect the failure cases among all trial cases. Our high accuracy hyphothesis result indicates that RCBHT is able to intuitively present this assembly process and SVM is good at classifying for this task. The classification will benefit the prevention of the detriment from happening and correcting the failure behaviors.
+
+    Failure detection plays an increasingly important role in industrial processes and robots that serve in unstructured environments. This work studies failure detection on cantilever snap assemblies, which are critical to industrial use and growing in importance for personal use. 
+    
+    \indent Our aim is to study whether an SVM can use a small set of features abstracted as behavior representations from the assembly force signature to accurately detect failure at different stages of the task. In this work, a linear SVM was embedded with abstract behavioral features was used to classify failure detection in cantilever snap assembly problems. The approach was useful in detecting failure both during early and late stages of the task. For early stages, low-abstraction behaviors sets performed better due to their granularity and local temporal nature. For late stage analysis, high-abstraction behaviors performed better as they capture representative and global behaviors better.
+
 \end{eabstract}
 
