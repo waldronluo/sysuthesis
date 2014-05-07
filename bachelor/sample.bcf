@@ -1955,10 +1955,15 @@
     <bcf:citekey order="11">di2013bayesian</bcf:citekey>
     <bcf:citekey order="12">2012ICMA-Rojas-PivotApproach</bcf:citekey>
     <bcf:citekey order="13">2013IJMA-Rojas-TwrdsSnapSensing</bcf:citekey>
-    <bcf:citekey order="14">2012IROS-Rojas-RCBHT</bcf:citekey>
-    <bcf:citekey order="15">CC01a</bcf:citekey>
-    <bcf:citekey order="16">keerthi2003asymptotic</bcf:citekey>
-    <bcf:citekey order="17">masonfailure</bcf:citekey>
+    <bcf:citekey order="14">2012JAR-Rojas-AutHetBotAsmbly</bcf:citekey>
+    <bcf:citekey order="15">2012IROS-Rojas-RCBHT</bcf:citekey>
+    <bcf:citekey order="16">hager1976lagrange</bcf:citekey>
+    <bcf:citekey order="17">keerthi2001improvements</bcf:citekey>
+    <bcf:citekey order="18">CC01a</bcf:citekey>
+    <bcf:citekey order="19">keerthi2003asymptotic</bcf:citekey>
+    <bcf:citekey order="20">2013IJMA-Rojas-TwrdsSnapSensing</bcf:citekey>
+    <bcf:citekey order="21">CC01a</bcf:citekey>
+    <bcf:citekey order="22">masonfailure</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="none">
   <bcf:sorting>

@@ -5,9 +5,11 @@
 % Public domain.
 
 \chapter{Classification with SVMs and the RCBHT}
-In this section we will introduce a binary classifier using Support Vector Machines and feature inputs from RCBHT labels. The first three layers of the RCBHT taxonomy are of relevant importance to the classification problem. Labels from these three layers will be used to construct fixed-length feature vectors. The premise of constructing a feature vector out of RCBHT labels is that success cases have similar patterns in all six axis and similar patterns indicate the similar gradient of each separation of the signal.
+In this section we will introduce a binary classifier using Support Vector Machines and feature inputs from RCBHT labels. The first three layers of the RCBHT taxonomy are of importance to the classification problem. Labels from these three layers are used to construct fixed-length feature vectors. The premise of constructing a feature vector out of RCBHT labels is that success cases have similar patterns in all six axis and similar patterns indicate the similar gradient of each separation of the signal.
 
 \indent The left four signal figures are success cases and right four are failure cases before Rotation state. The success cases are in similar patterns while the failure cases are different from the success cases diversely. With diverse gradients of different patterns, RCBHT can be used in our work.
+
+\indent In \ref{sfsignal}, the four FT figures on the left represent success cases. The four FT figures on the right represent failure cases before the Rotation state. The success cases posses similar patterns while the failure cases are different from the success cases in a number of diverse manners. The difference between success and failure cases is significant enough that a binary set of classes can be extracted to ascertain success from failure.
 
 \begin{figure}[h]
     \centering
@@ -17,13 +19,13 @@ In this section we will introduce a binary classifier using Support Vector Machi
     \label{sfsignal}
 \end{figure}
 
+\indent Thus, feature vectors were created by using encoded behavior labels from the RCBHT. Different feature vectors were constructed from different RCBHT layers. Specifically, we used behaviors from the Primitives, Motion Composition, and Low-Level Behavior layers to build three different feature vectors.  . The feature vector constructed from RCBHT label sets have few dimensions, at most 9. A typical feature vector, may include upto 2000 sample points for even a 10-second assembly with a sampling frequency of 200Hz.
 
-\indent Thus, feature vectors were created with RCBHT. Our feature vectors are composed of gradient labels at three different levels of abstraction that characterize an assembly task. The taxonomy RCBHT is based on relative change. THe reason for choosing RCBHT is that this taxonomy is specially developed for this task. Also, the feature vector constructed with RCBHT has much fewer dimension, at most 9, than typical feature, which may use 2000 sample points for 10-second assembly with sampling frequency of 200Hz. \\
-\indent This approach with SVM all based on one assumption when the classifier was trained, it could only be used for assembly with same configuration. Different geometric snap, changing assembly strategy, different sensor position etc. would change the signal patterns which would be misidentified. Any change of configuration required retraining under that configuration. \\
-\indent Then comes to our approach setup. In the first subsection following, we will describe our approach to construct feature in detail. The second subsection will talk about our work with SVM briefly. 
+\indent This approach assumesthat once the classifier is trained, it can only be used for assemblies with same configuration. If snaps with different geometries, strategies, or sensor positions are used, then the signal patterns would change significantly and the classifier would failAny change of configuration requires retraining of the classifer under that new configuration.
+
 \section{Feature Vector Constructing}
-\indent With the RCBHT, we sample the whole assembly using Primitive labels, Motion Composites labels, Low-level behavior labels. Each axis, $F_{i}$, contains n entries, each represent a label type $e_{j}$. Such that $F_{i} = {e_{1}, e_{2}, \dots , e_{n}}$. The whole vector is consist of six axis, $F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}$. 9 labels independently of each axis is consisted in primitive layer, 7 of MC and 7 of LLB. The feature vector will be conducted containing 6 axis, as $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$. Take the vector representing Primitive layer if in $F_{x}$, bpos occurs twice, mpos occurs once, and the other axis do not have labels (which is an impossible case but just for better understanding), the final vector will be constructed as $[2, 1,\underbrace{0,0, \dots, 0}_\text{52 zeros}]$     \\
-\indent Detailed representation for Primitive layer, Motion Composites layer, Low-level behavior layer can be seem in \ref{featureVector}.
+\indent With the RCBHT, we sample the whole assembly using Primitive labels, Motion Composites labels, and Low-level behavior labels. Each axis, $F_{i}$, contains n entries, each represent a label type $e_{j}$. Such that $F_{i} = {e_{1}, e_{2}, \dots , e_{n}}$. The whole vector is consist of six FT axis, $F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}$. With respect to labels,The primitive layer yields a set of nine labels independently for each axis , the MC layer in turn yields seven lables, and the LLB also yields seven labels. The feature vector will be conducted containing 6 axis, as $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$. Take the vector representing Primitive layer if in $F_{x}$, bpos occurs twice, mpos occurs once, and the other axis do not have labels (which is an impossible case but just for better understanding), the final vector will be constructed as $[2, 1,\underbrace{0,0, \dots, 0}_\text{52 zeros}]$     \\
+\indent A detailed representation of Primitive, Motion Composites, and Low-level behavior sets can be seem in \ref{featureVector}.
 \begin {table}[h]
 \centering
 \caption {Feature Vector Representation}
@@ -36,14 +38,15 @@ MC Layer        & a     & i     & d     & k     & pc    & nc    & c     &       
 LLB Layer       & FX    & CT    & PS    & PL    & AL    & SH    & U     & N     &       \\ \hline
 \end {tabular}
 \end {table}
+
 \section{Classify Feature Vector}
-After constructing feature vectors, classifer should be trained between the success and failure cases. Among different techniques for supervised classification, linear Support Vector Machine is chosen. In this section, we will briefly talk about classifier implementation and review Support Vector Machine and kernel function.\\
-\section{Support Vector Machine Review}
-The Support Vector Machine methos is to find a hyperplane that separate the cases with different labels. Nice prediction are made when all cases, represented by points, are far away from the hyperplane, which means all the hyphothesis are creditable. The hyperplane can be represented as:$\omega^{T}x+b=0$. Here $\omega^{T}$ is the multiply factor of the hyperplane when b means the bias from the zero point. Each point, the deviation can be represented as: \\
+After constructing the feature vectors, the classifer should be trained using the success and failure cases. Among different techniques for supervised classification, linear Support Vector Machine was chosen. In this section, we will discuss classifier implementation and review Support Vector Machine and kernel function.\\
+\section{Support Vector Machines}
+The Support Vector Machine method finds a hyperplane that separate cases with different labels. Predictions are made when all samples, represented by points, are far away from a hyperplane, inidicating that the presented hyphothesis is credible. The hyperplane can be represented as: $\omega^{T}x + b = 0$, where $\omega^{T}$ is the multiplying factor of the hyperplane, and b is the bias from the zero point. Each point, the deviation can be represented as: \\
 \begin{equation}
     \hat{\gamma}^{(i)}=y^{(i)}(\omega^{(i)}x+b)
 \end{equation}
-Here $(y^{(i)}, x^{(i)}$ is a single case when $y^{(i)}$ is the label whether this case was success or not represented in {1, -1} respectively and $x^{(i)}$ is the vector input for training and testing. $\hat{\gamma}^{(i)}$ is the functional margin of this case. To have a nice hyperplane, we need to let as many as possible points to get as far away as well from the hyperplane. That's to say,
+Here $(y^{(i)}, x^{(i)}$ is a single case where $y^{(i)}$ indicates whether this case succeeded or not. Outcome is represented as  {1, -1} respectively. $x^{(i)}$ is the vector input for training and testing. $\hat{\gamma}^{(i)}$ is the functional margin of this case. To have a nice hyperplane, we need to let as many as possible points to get as far away as well from the hyperplane. That's to say,
 \begin{equation}
     \begin{split}
         max\quad&\gamma \nonumber \\
@@ -52,4 +55,34 @@ Here $(y^{(i)}, x^{(i)}$ is a single case when $y^{(i)}$ is the label whether th
 \end{equation}
 Here $\gamma$ is the geometric margin of points from hyperplane. This equation shows that the nature of SVM is to find a hyperplane to maximize $\gamma$, which is the least functional margin of $\hat{\gamma}$.
 \section{Classifier Implementation}
-\indent In our work, libsvm \cite{CC01a} is used with Gaussian Kernel \cite{keerthi2003asymptotic}, which is recommended as the first try kernel. After labeling each feature vector with 1 or -1 to present success or failure, the cases with labels were then trained with Support Vector Machine and get a hyperplane. The two kind of cases were separated in the two sides. With this hyperplane, new cases can be predicted. \\
+\indent Implementing the SVM classifier takes account the Lagrange duality problem \cite{hager1976lagrange} and the SMO algorithm \cite{keerthi2001improvements}. Many SVM open library existed, among which, libsvm \cite{CC01a} was chosen with Gaussian Kernel \cite{keerthi2003asymptotic}. \\
+\begin{description}
+    \item[First] \hfill \\
+        Firstly, the signal data will constructed into labels of different layers as shown in \ref{fig:hlbehav} \cite{2013IJMA-Rojas-TwrdsSnapSensing} \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.50in, height=1.75in]{./img/encl2/6.png}
+    \caption{This figure shows data related to the first four layers of the RCBHT. (1) The Primitive Layer: red line linear segments try to approximate original data and represent primitives. (2) The Composites Layer: composed by analysis of neighboring primitives. Corresponding labels appear in black at the top-most part of screen. (3) The LLB Layer: LLBs composed by analysis of neighboring composites. Corresponding labels appear in uppercase red letters below the graph. (4) The HLB Layer: HLBs derive from key LLBs. Corresponding labels appear in green at the bottom-most part of screen.}
+    \label{fig:hlbehav}
+\end{figure}
+        Now let's construct the feature vector. Here the labels of MC layer are [d, a, a, a, i, k, a, d, i, a, i, a, k, a, a, k, a, a, i, a, a, a, k, a, k] (The strategy we used only contains 4 states, the example here is expedient for illustration). Then the feature vector will be constructed as [14, 4, 1, 5, 0, 0, 0]. Notice that the data here is only the data of $F_{x}$. Let $F_{x} = [14, 4, 1, 5, 0, 0, 0]$
+    \item[Second] \hfill \\
+        Repeat the first operation until the other five axis of data are constructed. The overall feature vector is $[F_{x}, F_{y}, F_{z}, M_{x}, M_{y}, M_{z}]$.
+    \item[Third] \hfill \\
+        Label the feature vector. Here this example case is a success case, so label it with 1 (Failure cases are labeld with -1. Actually they can be labeled as any number as long as it is different from the label of success cases). 
+    \item[Forth] \hfill \\
+        Repeat the first three steps for all cases. Combine all cases into a matrix of all vectors, and a vector of all labels. Then trained them with SVM and a SVM struct will be returned. This struct recorded the hyperplane and all kinds parameters needed for SVM and prediction of new cases will use this struct. In other words, the training end. The use of libsvm can be seem in \cite{CC01a}.
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+
+
